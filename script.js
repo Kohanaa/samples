@@ -5,10 +5,10 @@ var frameX = -1;
 var x = 0;
 var y = 0;
 var skins = [
-  'https://opengameart.org/sites/default/files/styles/medium/public/troll-red.png',
-  'https://opengameart.org/sites/default/files/styles/medium/public/troll-green_3.png',
-  'https://opengameart.org/sites/default/files/styles/medium/public/troll-brown.png',
-  'https://opengameart.org/sites/default/files/styles/medium/public/troll-darkgreen.png'
+  'img/troll-red.png',
+  'img/troll-green_3.png',
+  'img/troll-brown.png',
+  'img/troll-darkgreen.png'
   ]
 var skinId = 0;
 var direction = 'right';
