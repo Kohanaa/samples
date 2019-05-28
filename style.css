@@ -1,0 +1,17 @@
+#stage {
+  width: 500px;
+  height: 300px;
+  background-color: gray;
+  position: relative;
+  background-image:
+  url(https://opengameart.org/sites/default/files/styles/medium/public/dry_grass.png.preview.jpg);
+}
+
+.orc {
+  position: absolute;
+  width: 48px;
+  height: 64px;
+  background-image: url(https://opengameart.org/sites/default/files/styles/medium/public/troll-darkgreen.png);
+  background-position: -48px -64px;
+  transition: left 0.04s, top 0.04s;
+}
