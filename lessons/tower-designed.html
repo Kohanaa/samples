@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tower designed</title>
+  <style>
+  #stage {
+    width: 700px;
+    height: 400px;
+    position: relative;
+    background-size: cover;
+    background-image: url(https://thumbs.dreamstime.com/z/jumgle-forest-game-background-flat-landscape-wild-jungle-plants-lianas-along-road-ground-stones-nature-simple-132258009.jpg);
+  }
+
+  .base {
+    width: 60px;
+    height: 50px;
+    position: absolute;
+    background-size: cover;
+    background-image: url(https://cdn2.iconfinder.com/data/icons/crystalproject/crystal_project_256x256/apps/fortress.png);
+  }
+
+  .monster {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    transition: all 0.2s;
+    background-size: cover;
+    background-image: url(http://pngriver.com/wp-content/uploads/2018/04/Download-Blue-Monster-PNG-HD-For-Designing-Projects.png);
+  }
+
+  .fired {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    transition: all 0.2s;
+    background-size: cover;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVAvVwTgTH6v5CubkChCzLRKhM2JVM7Txt3V8c6rk9gU4uZeYD);
+  }
+
+  .tower {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    background-size: cover;
+    background-image: url(https://cdn2.iconfinder.com/data/icons/crystalproject/crystal_project_256x256/apps/fortress.png);
+  }
+  </style>
+</head>
+<body>
+  <div id="stage"></div>
+<script>
+var stage = document.getElementById('stage');
+var base = new Base("base", stage, 650, 200);
+var tower = new Tower("tower", stage, 200, 170);
+var monsterCount = 1;
+var monsterCollection = [];
+var monster;
+var monsterKilled = false;
+for (var i = 0; i < monsterCount; i++) {
+  monster = new Monster("monster_" + i, stage, 30, 200);
+  monsterCollection.push(monster);
+}
+
+setInterval(function() {
+
+  monster.moveToObject(base);
+  monster.draw();
+  if (intersect(monster, tower, tower.radius)) {
+    if (monsterKilled) {
+      return false
+    }
+    monsterKilled = true;
+    tower.attack(monster);
+    setTimeout(function() {
+
+      monster = new Monster("monster_" + i, stage, 30, 200)
+      monsterKilled = false
+    }, 1000);
+  }
+}, 300)
+
+
+
+function Base(id, stageEl, x, y) {
+  var el = document.createElement('div');
+  el.setAttribute('id', id);
+  el.setAttribute('class', 'base');
+  stageEl.appendChild(el);
+  this.x = x;
+  this.y = y;
+  this.draw = function() {
+
+    el.style.left = this.x - 30 + 'px';
+    el.style.top = this.y - 25 + 'px';
+  }
+  this.draw();
+}
+
+function Tower(id, stageEl, x, y) {
+  var el = document.createElement('div');
+  el.setAttribute('id', id);
+  el.setAttribute('class', 'tower');
+  stageEl.appendChild(el);
+  this.radius = 100;
+  this.x = x;
+  this.y = y;
+  this.attack = function(monster) {
+    monster.destroy();
+  }
+  this.draw = function() {
+
+    el.style.left = this.x - 30 + 'px';
+    el.style.top = this.y - 25 + 'px';
+  }
+  this.draw();
+}
+
+function intersect(object, target, radius) {
+  if (Math.abs(target.x - object.x) < radius) {
+    return true;
+  }
+  return false
+}
+
+function Monster(id, stageEl, x, y, speed) {
+  var me = this;
+  var el = document.createElement('div');
+  el.setAttribute('id', id);
+  el.setAttribute('class', 'monster');
+  stageEl.appendChild(el);
+  this.x = x;
+  this.y = y;
+  this.speed = speed || 10;
+  this.moveToObject = function(targetObject) {
+    var deltaX = targetObject.x - me.x;
+    var deltaY = targetObject.y - me.y;
+    if (deltaX < 0) {
+      me.x -= me.speed;
+    } else {
+      me.x += me.speed;
+    }
+    if (deltaY < 0) {
+      me.y -= me.speed;
+    } else {
+      me.y += me.speed;
+    }
+  }
+  this.destroy = function() {
+    el.setAttribute("class", "fired");
+    setTimeout(function() {
+      stageEl.removeChild(el);
+    }, 1000)
+  }
+  this.draw = function() {
+
+    el.style.left = this.x - 5 + 'px';
+    el.style.top = this.y - 5 + 'px';
+  }
+  this.draw();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tower defence</title>
+
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="css/buildings.css">
+  <link rel="stylesheet" href="css/monsters.css">
+
+  <script src="js/game.js"></script>
+  <script src="js/buildings.js"></script>
+  <script src="js/monsters.js"></script>
+
+</head>
+<body>
+  <div id="stage"></div>
+<script>
+/** init game, create stage */
+var game = new Game("stage");
+
+/** create buildings */
+var base = new Base("base", game, 650, 100);
+var tower = new Tower("tower", game, 200, 170);
+
+/** create monster */
+var ork = new Ork("ork", game, 30, 200);
+
+ork.setTarget(base);
+
+setInterval(function() {
+  ork.move();
+  ork.draw();
+}, 300);
+/*
+var stage = document.getElementById('stage');
+var base = new Base("base", stage, 650, 200);
+var tower = new Tower("tower", stage, 200, 170);
+var monsterCount = 1;
+var monsterCollection = [];
+var monster;
+var monsterKilled = false;
+for (var i = 0; i < monsterCount; i++) {
+  monster = new Monster("monster_" + i, stage, 30, 200);
+  monsterCollection.push(monster);
+}
+
+setInterval(function() {
+  monster.moveToObject(base);
+  monster.draw();
+  if (intersect(monster, tower, tower.radius)) {
+    if (monsterKilled) {
+      return false
+    }
+    monsterKilled = true;
+    tower.attack(monster);
+    setTimeout(function() {
+
+      monster = new Monster("monster_" + i, stage, 30, 200)
+      monsterKilled = false
+    }, 1000);
+  }
+}, 300)
+*/
+</script>
+</body>
+</html>

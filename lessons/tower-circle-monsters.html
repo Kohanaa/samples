@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Tower circle monsters</title>
+  <style>
+    #stage {
+      width: 400px;
+      height: 300px;
+      background-color: gray;
+      position: relative;
+    }
+
+    .monster {
+      position: absolute;
+      background-color: purple;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .tower {
+      background-color: gold;
+      width: 60px;
+      height: 50px;
+      border-radius: 40%;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage"></div>
+<script>
+var stage = document.getElementById('stage');
+
+var tower = new Tower("tower", stage, 30, 25);
+
+var monsterCollection = [];
+var monsterCount = 15;
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
+var monster;
+for(var i=0; i< monsterCount; i++) {
+  monster = new Monster("monster_"+i, stage, getRandomInt(300,400), getRandomInt(200,300));
+  monsterCollection.push(monster);
+}
+
+setInterval(function() {
+  for(var i=0; i< monsterCollection.length; i++) {
+    monsterCollection[i].moveToObject(tower);
+    monsterCollection[i].draw();
+  }
+}, 300)
+
+function Tower(id, stageEl, x, y) {
+  var el = document.createElement('div');
+  el.setAttribute('id', id);
+  el.setAttribute('class', 'tower');
+  stageEl.appendChild(el);
+  this.x = x;
+  this.y = y;
+  this.draw = function() {
+
+    el.style.left = this.x - 30 + 'px';
+    el.style.top = this.y - 25 + 'px';
+  }
+  this.draw();
+}
+
+function Monster(id, stageEl, x, y, speed) {
+  var me = this;
+  var el = document.createElement('div');
+  el.setAttribute('id', id);
+  el.setAttribute('class', 'monster');
+  stageEl.appendChild(el);
+  this.x = x;
+  this.y = y;
+  this.speed = speed || 10;
+  this.moveToObject = function(targetObject) {
+    var deltaX = targetObject.x - me.x;
+    var deltaY = targetObject.y - me.y;
+    if (deltaX < 0) {
+      me.x -= me.speed;
+    } else {
+      me.x += me.speed;
+    }
+    if (deltaY < 0) {
+      me.y -= me.speed;
+    } else {
+      me.y += me.speed;
+    }
+    if(me.y - targetObject.y < 25) {
+      if(me.x - targetObject.x < 30) {
+        console.log('crash')
+      }
+    }
+  }
+
+  this.draw = function() {
+
+    el.style.left = this.x - 5 + 'px';
+    el.style.top = this.y - 5 + 'px';
+  }
+  this.draw();
+}
+</script>
+</body>
+</html>

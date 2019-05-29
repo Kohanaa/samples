@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Squares Control</title>
+  <style>
+    .btn {
+      cursor: pointer;
+      border: 1px solid #aaa;
+      background-color: cyan;
+      border-radius: 50%;
+      padding: 10px;
+    }
+
+    .square {
+      background-color: black;
+      position: absolute;
+      transition: all 0.5s;
+    }
+
+    #stage {
+      margin: 20px;
+      position: relative;
+      width: 400px;
+      height: 300px;
+      background-color: #eee;
+    }
+  </style>
+</head>
+<body>
+  <div id="stage"></div>
+<script>
+var stage = document.getElementById('stage');
+function Cube(id, stageEl, width, height, top, left, color, degr) {
+  var me = this;
+  var el = document.createElement('div');
+  el.setAttribute('id', id);
+  el.setAttribute('class', 'square');
+  /* we can get stage val from params */
+  stageEl.appendChild(el);
+  /* var el = document.getElementById(id) */
+  this.draw = function() {
+    el.style.left = left + 'px';
+    el.style.top = top + 'px';
+    el.style.width = width + 'px';
+    el.style.height = height + 'px';
+    el.style.transform = 'rotate(' + degr + 'deg)';
+    el.style.backgroundColor = color;
+  }
+  this.moveRight = function() {
+    left += 100;
+  }
+  this.moveLeft = function() {
+    left -= 100;
+  }
+  this.moveUp = function() {
+    top -= 100;
+  }
+  this.moveDown = function() {
+    top += 100;
+  }
+  setInterval(this.draw, 100);
+  el.onclick = function() {
+    cube = me;
+    console.log(me);
+  }
+}
+var cube = new Cube("square", stage, 20, 20, 40, 40, "cyan", 10);
+document.onkeyup = function(e) {
+  if (e.key == "ArrowUp") {
+    cube.moveUp();
+  } else if (e.key == "ArrowDown") {
+    cube.moveDown();
+  } else if (e.key == "ArrowLeft") {
+    cube.moveLeft();
+  } else if (e.key == "ArrowRight") {
+    cube.moveRight();
+  }
+  console.log(e);
+}
+var cube_1 = new Cube("square_1", stage, 50, 50, 200, 200, "red", 0)
+var cube_2 = new Cube("square_1", stage, 30, 30, 50, 100, "black", 0)
+
+</script>
+</body>
+</html>
