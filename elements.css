@@ -1,0 +1,8 @@
+#exit{
+  background-image:url(img/doors.png);
+  height: 70px;
+  width: 60px;
+  background-size: cover;
+  position: absolute;
+  transform:translate(-50%,-50%);
+}

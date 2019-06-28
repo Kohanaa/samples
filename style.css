@@ -13,4 +13,5 @@
   background-image: url(img/troll-darkgreen.png);
   background-position: -48px -64px;
   transition: left 0.04s, top 0.04s;
+  transform:translate(-50%,-50%);
 }

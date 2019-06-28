@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', function(event) {
+var door=new Door("exit",450,250);
   //the event occurred
 var orcEl = document.getElementById("orc");
 var frameX = -1;
 var x = 0;
-var y = 0;
+var y = 40;
 var skins = [
   'img/troll-red.png',
   'img/troll-green_3.png',
@@ -45,7 +46,7 @@ setInterval(function() {
   if (frameX == 3) {
     frameX = 0;
   }
-  if (direction == 'right' && x > 500 - 48) {
+  if (direction == 'right' && x > 500 - 24) {
     direction = 'left';
     frameY = 3;
   }
@@ -57,7 +58,7 @@ setInterval(function() {
     direction = 'bottom';
     frameY = 2;
   }
-  if (direction == 'bottom' && y > 300 - 64) {
+  if (direction == 'bottom' && y > 300 - 32) {
     direction = 'top';
     frameY = 0;
   }
@@ -72,7 +73,9 @@ setInterval(function() {
   } else {
     y += 5;
   }
-
+  if(intersect(door,{x:x,y:y},30)){
+    leave()
+  }
   orcEl.style.left = x + 'px';
   orcEl.style.top = y + 'px';
   orcEl.style.backgroundPosition = '-' + frameX * 48 + 'px -' + frameY * 64 + 'px';
