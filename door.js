@@ -3,8 +3,8 @@ function Door(id,x,y,scene){
   this.x=x;
   this.y=y;
   this.draw=function(){
-    el.style.left=x+"px";
-    el.style.top=y+"px";
+    el.style.left=this.x+"px";
+    el.style.top=this.y+"px";
   }
   this.draw();
 }
