@@ -12,7 +12,19 @@ var levels=[{
       enemyY:150,
       enemyD:"right",
       enemyS:5
-    },null]
+    },null],
+    wall:[{
+      x:400,
+      y:100,
+    },
+    {
+      x:430,
+      y:100,
+    },
+    {
+      x:460,
+      y:100,
+    }]
 },{
   name:"swamp",
   bg:"swamp.png",
@@ -32,6 +44,23 @@ var levels=[{
     enemyD:"right",
     enemyS:4
   }
+],
+wall:[{
+  x:300,
+  y:60,
+},
+{
+  x:300,
+  y:90,
+},
+{
+  x:300,
+  y:120,
+},
+{
+  x:300,
+  y:150,
+}
 ]
 },{
   name:"forest",
@@ -45,9 +74,24 @@ var levels=[{
     enemyY:150,
     enemyD:"left",
     enemyS:7
-  },null]
+  },null],
+  wall:[]
 }];
-
+function createCubes(cubes){
+  var cubeElements=document.querySelectorAll(".cube");
+  var stage=document.getElementById("stage");
+  for (var i = 0; i < cubeElements.length; i++) {
+    stage.removeChild(cubeElements[i]);
+  }
+  for (var i = 0; i < cubes.length; i++) {
+    var cubeEl=document.createElement("div");
+    cubeEl.classList.add("cube");
+    stage.appendChild(cubeEl);
+    cubeEl.style.left=cubes[i].x+"px";
+    cubeEl.style.top=cubes[i].y+"px";
+  }
+  return cubes
+}
 function openLocation(game){
   game.location+=1;
   if (game.location>=levels.length){
@@ -62,6 +106,7 @@ function openLocation(game){
   game.hero.y=level.heroY;
   game.door.x=level.doorX;
   game.door.y=level.doorY;
+  game.cubes=createCubes(level.wall)
   for (var i = 0; i < game.enemies.length; i++) {
     var enemy = game.enemies[i];
     var settings={
@@ -77,7 +122,7 @@ function openLocation(game){
     enemy.y=settings.enemyY;
     enemy.speed=settings.enemyS;
     enemy.direction=settings.enemyD;
-  
+
   };
   game.door.draw();
 }

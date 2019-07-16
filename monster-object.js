@@ -13,6 +13,25 @@ function Hero(id,x,y){
   var skinId = 0;
   var direction = 'right';
   var frameY = 1;
+  this.changeDirection=function(){
+    console.log(direction);
+    if (direction == 'right' ) {
+      direction = 'left';
+      frameY = 3;
+    }
+    else if (direction == 'left' ) {
+      direction = 'right';
+      frameY = 1;
+    }
+    else if (direction == 'top' ) {
+      direction = 'bottom';
+      frameY = 2;
+    }
+    else if (direction == 'bottom' ) {
+      direction = 'top';
+      frameY = 0;
+    }
+  }
   document.onkeyup = function(event) {
     if (event.key == 'ArrowRight') {
       direction = "right";
@@ -37,8 +56,6 @@ function Hero(id,x,y){
       }
       orcEl.style.backgroundImage='url('+skins[skinId]+')';
     }
-
-    console.log(event);
   }
   this.move=function(){
     frameX += 1;

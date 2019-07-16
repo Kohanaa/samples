@@ -15,3 +15,10 @@
   background-repeat: no-repeat;
   transform:translate(-50%,-50%);
 }
+.cube{
+  height:30px;
+  width: 30px;
+  background-color: black;
+  position: absolute;
+  transform:translate(-50%,-50%);
+}

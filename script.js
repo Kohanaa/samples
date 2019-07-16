@@ -15,24 +15,41 @@ game.enemies.push(enemy);
 var enemy1=new Enemy("enemy-1",-100,-100);
 enemy1.speed=0;
 game.enemies.push(enemy1);
+game.cubes=createCubes([{
+  x:400,
+  y:100,
+},
+{
+  x:430,
+  y:100,
+},
+{
+  x:460,
+  y:100,
+}])
 setInterval(function() {
   if (!game.status){
     return
   }
-  game.hero.move();
   if(intersect(game.door,game.hero,30)){
     game.status=false;
     openLocation(game);
   }
+  game.cubes.forEach(function(cube){
+    if(intersect(cube,game.hero,50)){
+      game.hero.changeDirection()
+    }
+  })
   game.enemies.forEach(function(enemy,index){
     enemy.move();
-    if(intersect(enemy,game.hero,50)){
+    if(intersect(enemy,game.hero,40)){
       game.status=false;
       game.location=0;
       openLocation(game);
     }
     enemy.draw();
   });
+  game.hero.move();
   game.hero.draw();
 }, 50)
 })
