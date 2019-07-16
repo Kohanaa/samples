@@ -12,7 +12,7 @@ var levels=[{
       enemyY:150,
       enemyD:"right",
       enemyS:5
-    }]
+    },null]
 },{
   name:"swamp",
   bg:"swamp.png",
@@ -45,7 +45,7 @@ var levels=[{
     enemyY:150,
     enemyD:"left",
     enemyS:7
-  }]
+  },null]
 }];
 
 function openLocation(game){
@@ -63,6 +63,7 @@ function openLocation(game){
   game.door.x=level.doorX;
   game.door.y=level.doorY;
   game.enemies.forEach(function(enemy,index){
+    debugger;
     var settings={
       enemyX:-100,
       enemyY:-100,
