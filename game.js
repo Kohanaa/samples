@@ -62,21 +62,22 @@ function openLocation(game){
   game.hero.y=level.heroY;
   game.door.x=level.doorX;
   game.door.y=level.doorY;
-  game.enemies.forEach(function(enemy,index){
-    debugger;
+  for (var i = 0; i < game.enemies.length; i++) {
+    var enemy = game.enemies[i];
     var settings={
       enemyX:-100,
       enemyY:-100,
       enemyD:"left",
       enemyS:0
     }
-    if (level["enemies"][index]){
-      settings=level["enemies"][index];
-      enemy.x=settings.enemyX;
-      enemy.y=settings.enemyY;
-      enemy.speed=settings.enemyS;
-      enemy.direction=settings.enemyD;
+    if (level["enemies"][i]){
+      settings=level["enemies"][i];
     }
-  });
+    enemy.x=settings.enemyX;
+    enemy.y=settings.enemyY;
+    enemy.speed=settings.enemyS;
+    enemy.direction=settings.enemyD;
+  
+  };
   game.door.draw();
 }
