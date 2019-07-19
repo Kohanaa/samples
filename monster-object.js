@@ -2,6 +2,7 @@ function Hero(id,x,y){
   var orcEl = document.getElementById(id);
   this.x=x;
   this.y=y;
+  this.lives=3;
   var me=this;
   var frameX = -1;
   var skins = [

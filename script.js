@@ -45,7 +45,13 @@ setInterval(function() {
     if(intersect(enemy,game.hero,40)){
       game.status=false;
       game.location=0;
-      openLocation(game);
+        game.hero.lives-=1;
+        if(game.hero.lives==0){
+          document.querySelector(".container").classList.add("finished");
+        }
+        else{
+          openLocation(game);
+        }
     }
     enemy.draw();
   });

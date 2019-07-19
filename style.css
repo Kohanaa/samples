@@ -4,6 +4,9 @@
   background-color: gray;
   position: relative;
   background-image: url(img/bg/preview.jpg);
+  overflow:hidden;
+  border:5px solid #E9C527;
+
 }
 
 .orc {

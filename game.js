@@ -99,7 +99,9 @@ function openLocation(game){
     return
   }
   var level=levels[game.location];
-  alert("Welcome to locaition " +level.name);
+  document.querySelector("#game-info .level").innerHTML=level.name;
+  document.querySelector("#game-info .number").innerHTML=game.location;
+  document.querySelector("#game-info .lives").innerHTML=game.hero.lives;
   game.changeBg(level.bg);
   game.status=true;
   game.hero.x=level.heroX;
