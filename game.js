@@ -2,7 +2,7 @@ var levels=[{
   //0
 },{
     name:"first level",
-    bg:"preview.jpg",
+    bg:"tile.png",
     heroX:50,
     heroY:50,
     doorX:450,
@@ -24,6 +24,10 @@ var levels=[{
     {
       x:460,
       y:100,
+    },
+    {
+      x:490,
+      y:110,
     }]
 },{
   name:"swamp",
@@ -64,7 +68,7 @@ wall:[{
 ]
 },{
   name:"forest",
-  bg:"forest.jpg",
+  bg:"forest.png",
   heroX:405,
   heroY:200,
   doorX:40,

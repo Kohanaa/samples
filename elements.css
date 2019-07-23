@@ -1,15 +1,16 @@
 #exit{
-  background-image:url(img/doors.png);
+  background-image:url(img/door.png);
   height: 70px;
-  width: 60px;
+  width: 70px;
   background-size: cover;
   position: absolute;
   transform:translate(-50%,-50%);
+  z-index: 0;
 }
 .enemy{
-  background-image: url(img/enemy.png);
-  height: 70px;
-  width: 40px;
+  background-image: url(img/headenemy.png);
+  height: 54px;
+  width: 51px;
   background-size: contain;
   position: absolute;
   background-repeat: no-repeat;
@@ -18,9 +19,10 @@
 .cube{
   height:30px;
   width: 30px;
-  background-color: black;
+  background-image: url(img/brick.png);
   position: absolute;
   transform:translate(-50%,-50%);
+  background-size: cover;
 }
 .container{
   margin:0 auto;

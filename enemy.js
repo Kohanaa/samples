@@ -44,6 +44,8 @@ function Enemy(id,x,y,scene){
   this.draw=function(){
     el.style.left=this.x+"px";
     el.style.top=this.y+"px";
+    var angle=(frameY-1)*90;
+    el.style.transform=`rotate(${angle}deg)`
   }
   this.draw();
 }

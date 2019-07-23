@@ -8,7 +8,7 @@ var game={
   }
 }
 game.door=new Door("exit",450,250);
-game.hero=new Hero("orc",50,50);
+game.hero=new HeroHead("hero-head",50,50);
 game.enemies=[];
 var enemy=new Enemy("enemy", 300,150);
 game.enemies.push(enemy);
@@ -26,6 +26,10 @@ game.cubes=createCubes([{
 {
   x:460,
   y:100,
+},
+{
+  x:490,
+  y:110,
 }])
 setInterval(function() {
   if (!game.status){
