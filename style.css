@@ -20,8 +20,8 @@
 }
 .hero-head {
   position: absolute;
-  width: 31px;
-  height: 34px;
+  width: 41px;
+  height: 44px;
   background-image: url(img/redhead.png);
   transition: left 0.04s, top 0.04s;
   transform:translate(-50%,-50%);

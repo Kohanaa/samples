@@ -29,18 +29,27 @@ game.cubes=createCubes([{
 },
 {
   x:490,
-  y:110,
-}])
+  y:100,
+},
+{
+  x:370,
+  y:100,
+},
+{
+  x:340,
+  y:100,
+}
+])
 setInterval(function() {
   if (!game.status){
     return
   }
-  if(intersect(game.door,game.hero,30)){
+  if(intersect(game.door,game.hero,50)){
     game.status=false;
     openLocation(game);
   }
   game.cubes.forEach(function(cube){
-    if(intersect(cube,game.hero,50)){
+    if(intersect(cube,game.hero,30)){
       game.hero.changeDirection()
     }
   })

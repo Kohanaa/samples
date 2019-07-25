@@ -27,8 +27,17 @@ var levels=[{
     },
     {
       x:490,
-      y:110,
-    }]
+      y:100,
+    },
+    {
+      x:370,
+      y:100,
+    },
+    {
+      x:340,
+      y:100,
+    }
+  ]
 },{
   name:"swamp",
   bg:"swamp.png",
@@ -79,7 +88,10 @@ wall:[{
     enemyD:"left",
     enemyS:7
   },null],
-  wall:[]
+  wall:[{
+    x:300,
+    y:60,
+  }]
 }];
 function createCubes(cubes){
   var cubeElements=document.querySelectorAll(".cube");
@@ -99,7 +111,7 @@ function createCubes(cubes){
 function openLocation(game){
   game.location+=1;
   if (game.location>=levels.length){
-    alert("game completed");
+    document.querySelector(".container").classList.add("finished");
     return
   }
   var level=levels[game.location];
