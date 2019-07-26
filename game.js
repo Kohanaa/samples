@@ -112,6 +112,7 @@ function openLocation(game){
   game.location+=1;
   if (game.location>=levels.length){
     document.querySelector(".container").classList.add("finished");
+    document.querySelector(".you-win").style.zIndex=2;
     return
   }
   var level=levels[game.location];

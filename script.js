@@ -61,6 +61,7 @@ setInterval(function() {
         game.hero.lives-=1;
         if(game.hero.lives==0){
           document.querySelector(".container").classList.add("finished");
+          document.querySelector(".game-over").style.zIndex=2;
         }
         else{
           openLocation(game);
